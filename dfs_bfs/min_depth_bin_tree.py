@@ -9,15 +9,14 @@
 class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:
         if not root: return 0
-        stack = [root]
-        count = 0
-        while stack:
-            count += 1
-            size = len(stack)
+
+        q, level = [root], 0
+        while q:
+            size = len(q)
+            level += 1
             for i in range(size):
-                node = stack.pop(0)
-                if not node.left and not node.right:
-                    return count
-                if node.left: stack.append(node.left)
-                if node.right: stack.append(node.right)
-        return count
+                node = q.pop(0)
+                if not node.left and not node.right: return level
+                if node.left: q.append(node.left)
+                if node.right: q.append(node.right)
+        return level
