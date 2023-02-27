@@ -8,13 +8,13 @@
 class Solution:
     def reverse(self, head):
         if not head or not head.next: return head
-            left, right = None, head
+        left, right = None, head
 
-            while right:
-                tmp, right.next = right.next, left
-                left, right = right, tmp
+        while right:
+            tmp, right.next = right.next, left
+            left, right = right, tmp
 
-            return left
+        return left
     
     def isEqual(self, one, two):
         while one and two:
